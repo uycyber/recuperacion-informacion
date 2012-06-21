@@ -68,9 +68,9 @@
 		}
 	}
 ?>
-
+<!--
         <br/><h3> Documentos Registrados</h3>
-        <?
+        <?/*
             $consulta= "SELECT * FROM documentopdf";
             $query= mysql_query($consulta);
             if(mysql_num_rows($query)> 0){
@@ -102,9 +102,9 @@
             {
                                 echo "<div class= 'error'> No existen Documentos Cargados </div>";
 
-            }
+            } */
         ?>
-        
+       -->
 	<br><h3>Resultado de la Limpieza</h3>
 	<!-- imprimir el resultado en un textarea -->
 	<textarea name="cleantext" rows="30" cols="80" readonly="readonly"><?php echo "$contenido"; ?></textarea>
