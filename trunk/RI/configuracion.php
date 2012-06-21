@@ -9,12 +9,14 @@ $separador= DIRECTORY_SEPARATOR;
 
 //Directorio para repositorios de archivos pdf
 $dirRepositorio= "archivossubidos".$separador;
-mkdir($dirRepositorio);
+if(file_exists ( $dirRepositorio )){}
+else{mkdir($dirRepositorio);}
 
 
 //Directorio de Archivos limpios
 $dirDocLimp= "archivosLimpios".$separador;
-mkdir($dirDocLimp);
+if(file_exists ( $dirDocLimp )){}
+else{mkdir($dirDocLimp);}
 
 
 ?>
