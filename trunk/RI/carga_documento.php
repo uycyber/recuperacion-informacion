@@ -7,7 +7,7 @@
 ?>
 <h1><img alt=""  src="images/pdf.png" align="middle">Carga de Documentos</h1><br>
 <h3>Seleccione el archivo .PDF que desea limpiar</h3>
-<form name="formexam" action="<?=$PHP_SELF?>" method="post" enctype="multipart/form-data"> 
+<form name="formexam" action="" method="post" enctype="multipart/form-data"> 
 	<p>Nombre del documento: <br/>
                <input type="text" id="nombre" name="nombre" size="20">
                <input type="file" name="archivo" id="archivo">
@@ -34,8 +34,8 @@
                         if($contenido!= ""){
                             ////Registra los documentos cargados en la BD
                             $nomb= $_POST['nombre'];
-                            $consulta = "insert into documentopdf (nombre, ruta_documento) value ('$nomb', '{$diro}')";
-                            $query = mysql_query($consulta) or die ("<script> alert('Error: Se produjo un error al cargar el archivo');</script>");
+                            //$consulta = "insert into documentopdf (nombre, ruta_documento) value ('$nomb', '{$diro}')";
+                            //$query = mysql_query($consulta) or die ("<script> alert('Error: Se produjo un error al cargar el archivo');</script>");
 
                             $contenido = strtolower($contenido); 								//a minusculas
                             $p = array('/À/','/Â/','/Ã/','/Ä/','/Å/','/È/','/Ê/','/Ë/','/Ì/','/Î/','/Ï/','/Ò/','/Ô/','/Õ/','/Ö/','/Ø/','/Ù/','/Û/','/Ü/','/Á/','/É/','/Í/','/Ó/','/Ú/','/á/','/é/','/í/','/ó/','/ú/','/à/','/è/','/ì/','/ò/','/ù/','/â/','/ê/','/î/','/ô/','/û/','/ä/','/ë/','/ï/','/ö/','/ü/','/ã/','/å/','/õ/','/ø/','/ç/','/ÿ/','/Ñ/', '//', '/1/', '/2/', '/3/', '/4/', '/5/', '/6/', '/7/', '/8/', '/9/', '/0/');
