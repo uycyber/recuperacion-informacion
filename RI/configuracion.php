@@ -1,8 +1,4 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 //Separador de directorios, de acuerdo al sistema operativo
 $separador= DIRECTORY_SEPARATOR;
