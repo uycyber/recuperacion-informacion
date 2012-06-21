@@ -1,6 +1,5 @@
 <?php
 	include_once("plantillas/plantilla.php");//incluir plantilla.
-        include_once("conexionbd/conexion.php");
         include_once("utilities.php");
         include_once("configuracion.php");
 
