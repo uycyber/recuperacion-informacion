@@ -2,6 +2,7 @@
 	include_once("plantillas/plantilla.php");//incluir plantilla.
         include_once("utilities.php");
         include_once("configuracion.php");
+        include_once("class.pdf2text.php");
 
 	antes_del_contenido();														//invocar mitad uno de la plantilla.
 ?>
@@ -28,7 +29,12 @@
 			$dird = $dirDocLimp. $_FILES['archivo']['name'] .".txt"; //direccion donde se guarda el txt. El archivo no limpio.
                         
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			exec ("pdftotext $diro $dird"); 									//De .pdf a .txt
+			$a = new PDF2Text();
+                        $a->setFilename($dirRepositorio.$_FILES['archivo']['name']);
+                        $a->decodePDF();
+                        
+                        /*
+                        exec ("pdftotext $diro $dird"); 									//De .pdf a .txt
 			$contenido = "";
 			$contenido = file_get_contents($dird); 								//leer el archivo .txt
                         if($contenido!= ""){
@@ -59,7 +65,7 @@
                             fclose($fp);
                             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                        }
+                        }*/
 			
 		}
 		else
@@ -107,7 +113,7 @@
        -->
 	<br><h3>Resultado de la Limpieza</h3>
 	<!-- imprimir el resultado en un textarea -->
-	<textarea name="cleantext" rows="30" cols="80" readonly="readonly"><?php echo "$contenido"; ?></textarea>
+	<textarea name="cleantext" rows="30" cols="80" readonly="readonly"><?php /*echo "$contenido";*/ echo $a->output();?></textarea>
 	<br><br>
 <?php	
 /*
