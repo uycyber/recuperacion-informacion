@@ -38,11 +38,8 @@
 			$contenido = "";
 			$contenido = file_get_contents($dird); 								//leer el archivo .txt
                         if($contenido!= ""){
-                            ////Registra los documentos cargados en la BD
                             $nomb= $_POST['nombre'];
-                            //$consulta = "insert into documentopdf (nombre, ruta_documento) value ('$nomb', '{$diro}')";
-                            //$query = mysql_query($consulta) or die ("<script> alert('Error: Se produjo un error al cargar el archivo');</script>");
-
+                            
                             $contenido = strtolower($contenido); 								//a minusculas
                             $p = array('/À/','/Â/','/Ã/','/Ä/','/Å/','/È/','/Ê/','/Ë/','/Ì/','/Î/','/Ï/','/Ò/','/Ô/','/Õ/','/Ö/','/Ø/','/Ù/','/Û/','/Ü/','/Á/','/É/','/Í/','/Ó/','/Ú/','/á/','/é/','/í/','/ó/','/ú/','/à/','/è/','/ì/','/ò/','/ù/','/â/','/ê/','/î/','/ô/','/û/','/ä/','/ë/','/ï/','/ö/','/ü/','/ã/','/å/','/õ/','/ø/','/ç/','/ÿ/','/Ñ/', '//', '/1/', '/2/', '/3/', '/4/', '/5/', '/6/', '/7/', '/8/', '/9/', '/0/');
                             $r = array('a','a','a','a','a','e','e','e','i','i','i','o','o','o','o','o','u','u','u','a','e','i','o','u','a','e','i','o','u','a','e','i','o','u','a','e','i','o','u','a','e','i','o','u','a','a','o','o','c','y','ñ', '', '', '', '', '', '', '', '', '', '', '');
