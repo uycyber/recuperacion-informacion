@@ -1,9 +1,6 @@
 <?php
     include_once("configuracion.php");
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 function listar_directorios_ruta($ruta){
    // abrir un directorio y listarlo recursivo
    $docs=null;
@@ -40,7 +37,7 @@ function stop_words($contenido, $stopwords_file)
     //Se carga la lista de stopwords desde un archivo de texto
     $stopword = file($stopwords_file);
     $total = count($stopword);
-    for ($i=0; $i<= $total; $i++)
+    for ($i=0; $i< $total; $i++)
     {
         $stopword[$i] = trim(strtolower($stopword[$i]));
     }
@@ -57,7 +54,7 @@ function stop_words($contenido, $stopwords_file)
             }
             else
             {
-                $clean_term .= " ".$line;
+                $clean_term = " ".$line;
             }
         }
         return $clean_term;
@@ -68,7 +65,7 @@ function quitar_espacios_dobles($cadena)
 	$limpia    = '';
     $parts    = array();
     // dividir la cadena con todos los espacios que exista
-    $parts = split(' ',$cadena);
+    $parts = mb_split(' ',$cadena);
     foreach($parts as $subcadena)
     {
         // de cada subcadena elimino sus espacios a los lados

@@ -41,7 +41,7 @@ Other excellent options to search within a PDF:
 - pdflib TET (http://www.pdflib.com/products/tet/)
 - Online converter: http://snowtide.com/PDFTextStream
 */
-
+ini_set('max_execution_time', 300);
 
 class PDF2Text {
 	// Some settings
