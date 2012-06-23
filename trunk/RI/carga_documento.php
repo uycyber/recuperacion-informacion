@@ -2,7 +2,7 @@
 	include_once("plantillas/plantilla.php");//incluir plantilla.
         include_once("utilities.php");
         include_once("configuracion.php");
-        include_once("class.pdf2text.php");
+        include_once("pdf2text.php");
 
 	antes_del_contenido();														//invocar mitad uno de la plantilla.
 ?>
@@ -29,12 +29,12 @@
 			$dird = $dirDocLimp. $_FILES['archivo']['name'] .".txt"; //direccion donde se guarda el txt. El archivo no limpio.
                         
 			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			$a = new PDF2Text();
-                        $a->setFilename($diro);
-                        $a->decodePDF();
+			//$a = new PDF2Text();
+                        //$a->setFilename($diro);
+                        //$a->decodePDF();
                         
                         $contenido = "";
-			$contenido = $a->output(); 								//leer el archivo .txt
+			$contenido = pdf2text($diro); 								//leer el archivo .txt
                         if($contenido!= ""){
                             $nomb= $_POST['nombre'];
                             
@@ -45,7 +45,7 @@
                             $contenido = preg_replace("/[^A-Za-z0-9 '\n'ñ]/","",$contenido);		//quitar caracteres especiales.
                             $stopwords_file = "stopwords.txt";
                             //a esta funcion se le pasa la variable con el contenido limpio y el archivo que contiene las stopwords.
-                            $contenido = stop_words($contenido, $stopwords_file);				//funcion que elimina todas las stopwords
+                            //$contenido = stop_words($contenido, $stopwords_file);				//funcion que elimina todas las stopwords
 
                             $contenido = str_replace("\n", " ", $contenido);
                             $contenido = str_replace("\r", " ", $contenido);
@@ -61,6 +61,8 @@
                             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                         }
+                        else
+                        {echo "no leyo nada";}
 			
 		}
 		else
@@ -108,7 +110,7 @@
        -->
 	<br><h3>Resultado de la Limpieza</h3>
 	<!-- imprimir el resultado en un textarea -->
-	<textarea name="cleantext" rows="30" cols="80" readonly="readonly"><?php /*echo "$contenido";*/ echo $a->output();?></textarea>
+	<textarea name="cleantext" rows="30" cols="80" readonly="readonly"><?php echo $contenido; /*echo $a->output();*/?></textarea>
 	<br><br>
 <?php	
 /*
