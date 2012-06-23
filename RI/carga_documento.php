@@ -33,10 +33,8 @@
                         $a->setFilename($diro);
                         $a->decodePDF();
                         
-                        /*
-                        exec ("pdftotext $diro $dird"); 									//De .pdf a .txt
-			$contenido = "";
-			$contenido = file_get_contents($dird); 								//leer el archivo .txt
+                        $contenido = "";
+			$contenido = $a->output(); 								//leer el archivo .txt
                         if($contenido!= ""){
                             $nomb= $_POST['nombre'];
                             
@@ -44,7 +42,7 @@
                             $p = array('/À/','/Â/','/Ã/','/Ä/','/Å/','/È/','/Ê/','/Ë/','/Ì/','/Î/','/Ï/','/Ò/','/Ô/','/Õ/','/Ö/','/Ø/','/Ù/','/Û/','/Ü/','/Á/','/É/','/Í/','/Ó/','/Ú/','/á/','/é/','/í/','/ó/','/ú/','/à/','/è/','/ì/','/ò/','/ù/','/â/','/ê/','/î/','/ô/','/û/','/ä/','/ë/','/ï/','/ö/','/ü/','/ã/','/å/','/õ/','/ø/','/ç/','/ÿ/','/Ñ/', '//', '/1/', '/2/', '/3/', '/4/', '/5/', '/6/', '/7/', '/8/', '/9/', '/0/');
                             $r = array('a','a','a','a','a','e','e','e','i','i','i','o','o','o','o','o','u','u','u','a','e','i','o','u','a','e','i','o','u','a','e','i','o','u','a','e','i','o','u','a','e','i','o','u','a','a','o','o','c','y','ñ', '', '', '', '', '', '', '', '', '', '', '');
                             $contenido = preg_replace($p, $r, $contenido); 						//reemplazar vocales con acentos, entre otros.
-                            $contenido = ereg_replace("[^A-Za-z0-9 '\n'ñ]","",$contenido);		//quitar caracteres especiales.
+                            $contenido = preg_replace("/[^A-Za-z0-9 '\n'ñ]/","",$contenido);		//quitar caracteres especiales.
                             $stopwords_file = "stopwords.txt";
                             //a esta funcion se le pasa la variable con el contenido limpio y el archivo que contiene las stopwords.
                             $contenido = stop_words($contenido, $stopwords_file);				//funcion que elimina todas las stopwords
@@ -62,7 +60,7 @@
                             fclose($fp);
                             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                        }*/
+                        }
 			
 		}
 		else
